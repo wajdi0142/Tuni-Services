@@ -1,5 +1,5 @@
 <?php
-// db/config.php
+// C:\xampp\htdocs\tuni-services\db\config.php
 $host = 'localhost';
 $dbname = 'tuniservices';
 $username = 'root';

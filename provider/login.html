@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Connexion - Tuni-Services</title>
+  <title>Connexion Fournisseur - Tuni-Services</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="../assets/css/style.css" />
@@ -52,20 +52,23 @@
               </button>
             </div>
 
-            <!-- BOUTONS ORGANISÉS ICI -->
+            <!-- LIENS CENTRAUX : Mot de passe oublié + Créer un compte + Retour accueil -->
             <div class="text-center">
-              <a href="#" class="text-decoration-none text-muted small d-block mb-2" data-bs-toggle="modal" data-bs-target="#signupModal">
-                Créer un compte
-              </a>
+              <div class="d-flex flex-column flex-sm-row justify-content-center gap-3 align-items-center mb-3">
+                <a href="forgot-password.html" class="text-decoration-none text-primary small fw-semibold order-1 order-sm-1">
+                  Mot de passe oublié ?
+                </a>
+                <a href="#" class="text-decoration-none text-muted small order-2 order-sm-2" data-bs-toggle="modal" data-bs-target="#signupModal">
+                  Créer un compte
+                </a>
+              </div>
               <a href="../index.html" class="btn btn-outline-light btn-sm rounded-pill px-4">
                 <i class="fas fa-home"></i> Retour à l'accueil
               </a>
             </div>
-            <!-- FIN DES BOUTONS -->
-
           </form>
 
-          <!-- Toast -->
+          <!-- Toast de succès -->
           <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
             <div id="loginToast" class="toast align-items-center text-white bg-success border-0" role="alert">
               <div class="d-flex">
@@ -84,7 +87,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content bg-dark text-white" style="border-radius: 16px;">
         <div class="modal-header border-0">
-          <h5 class="modal-title">Créer un compte</h5>
+          <h5 class="modal-title">Créer un compte fournisseur</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
@@ -96,10 +99,10 @@
               <input type="email" class="form-control" placeholder="Email" id="regEmail" required />
             </div>
             <div class="mb-3">
-              <input type="text" class="form-control" placeholder="Téléphone" id="regPhone" />
+              <input type="text" class="form-control" placeholder="Téléphone (facultatif)" id="regPhone" />
             </div>
             <div class="mb-3">
-              <input type="password" class="form-control" placeholder="Mot de passe (6+)" id="regPassword" minlength="6" required />
+              <input type="password" class="form-control" placeholder="Mot de passe (6+ caractères)" id="regPassword" minlength="6" required />
             </div>
             <button type="submit" class="btn btn-primary w-100 rounded-pill">S'inscrire</button>
           </form>
@@ -108,28 +111,25 @@
     </div>
   </div>
 
-  <!-- SÉCURITÉ ANTI-RETOUR -->
+  <!-- SÉCURITÉ : vérification session + anti-retour -->
   <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    fetch("../api/check-session.php")
-      .then(res => res.json())
-      .then(data => {
-        if (data.loggedIn) {
-          window.location.href = "dashboard.php";
-        }
-      });
-  });
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("../api/check-session.php")
+        .then(res => res.json())
+        .then(data => {
+          if (data.loggedIn) {
+            window.location.href = "dashboard.php";
+          }
+        });
+    });
 
-  // Bloque le retour en arrière
-  if (performance.navigation.type === 2) {
-    window.location.href = "login.html";
-  }
-
-  window.addEventListener('pageshow', function(event) {
-    if (event.persisted) {
-      window.location.reload();
+    // Bloque le bouton retour après déconnexion
+    if (performance.navigation.type === 2) {
+      window.location.href = "login.html";
     }
-  });
+    window.addEventListener('pageshow', e => {
+      if (e.persisted) window.location.reload();
+    });
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -4,80 +4,165 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Connexion Fournisseur - Tuni-Services</title>
+
+  <!-- Bootstrap 5 + Font Awesome -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+  <!-- Police premium -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Ton CSS principal (le dernier qu’on a fait ensemble) -->
   <link rel="stylesheet" href="../assets/css/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* Styles spécifiques à la page login pour plus de classe */
+    body {
+      background: linear-gradient(135deg, #F5F5F5 0%, #e8ecf9 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-card {
+      background: white;
+      border-radius: 28px;
+      box-shadow: 0 20px 60px rgba(30, 42, 94,0.15);
+      overflow: hidden;
+      animation: fadeInUp 0.9s ease-out;
+      max-width: 420px;
+      margin: 2rem auto;
+    }
+
+    .login-header {
+      background: linear-gradient(135deg, #1E2A5E, #4A7BFA);
+      padding: 2.5rem 2rem 2rem;
+      text-align: center;
+      color: white;
+    }
+
+    .login-header img {
+      height: 65px;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+      margin-bottom: 1rem;
+    }
+
+    .form-control {
+      border-radius: 16px;
+      padding: 1rem 1.2rem;
+      border: 2px solid #e0e0e0;
+      font-size: 1.05rem;
+      background: #fafafa;
+    }
+
+    .form-control:focus {
+      border-color: #4A7BFA;
+      box-shadow: 0 0 0 5px #D0D9F5;
+      background: white;
+    }
+
+    .input-group-text {
+      background: white;
+      border-radius: 16px;
+    }
+
+    .btn-login {
+      background: #000000;
+      color: white;
+      font-weight: 700;
+      padding: 1rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      transition: all 0.4s;
+    }
+
+    .btn-login:hover {
+      background: #4A7BFA;
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(74, 123, 250, 0.4);
+    }
+
+    .btn-signup {
+      background: #EFECE3;
+      color: #1a1a1a;
+      font-weight: 700;
+      border: 2px solid #EFECE3;
+    }
+
+    .btn-signup:hover {
+      background: #1E2A5E;
+      color: #EFECE3;
+      border-color: #1E2A5E;
+    }
+
+    .link-primary {
+      color: #4A7BFA;
+      font-weight: 600;
+    }
+
+    .link-primary:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
 
-  <div class="video-overlay"></div>
-  <video autoplay muted loop id="bg-video" playsinline>
-    <source src="../assets/video/earth.mp4" type="video/mp4" />
-  </video>
-
-  <div class="container py-5 d-flex align-items-center" style="min-height: 100vh;">
-    <div class="row justify-content-center w-100">
+  <div class="container py-5">
+    <div class="row justify-content-center">
       <div class="col-md-6 col-lg-5 col-xl-4">
-        <div class="card shadow-lg p-4" style="border-radius: 20px; backdrop-filter: blur(12px);">
-          <div class="text-center mb-4">
-            <img src="../assets/img/logo.png" alt="Logo" class="logo float" height="60" />
-            <h3 class="mt-3 fw-bold text-white">Connexion Fournisseur</h3>
+
+        <div class="login-card">
+          <!-- Header bleu dégradé -->
+          <div class="login-header">
+            <img src="../assets/img/logo.png" alt="Tuni-Services" />
+            <h3 class="fw-bold mb-0">Connexion Fournisseur</h3>
+            <p class="opacity-90 small mt-2">Accédez à votre espace pro</p>
           </div>
 
-          <form id="loginForm" novalidate>
-            <div class="mb-3">
-              <label class="form-label text-white">Email</label>
-              <div class="input-group">
-                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                <input type="email" id="email" class="form-control" placeholder="exemple@domaine.com" required />
+          <!-- Formulaire -->
+          <div class="p-4 p-md-5">
+            <form id="loginForm" novalidate>
+              <div class="mb-4">
+                <label class="form-label fw-600 text-dark">Email</label>
+                <div class="input-group input-group-lg">
+                  <span class="input-group-text bg-white border-0"><i class="fas fa-envelope text-primary"></i></span>
+                  <input type="email" id="email" class="form-control" placeholder="votre@email.com" required />
+                </div>
               </div>
-            </div>
 
-            <div class="mb-3">
-              <label class="form-label text-white">Mot de passe</label>
-              <div class="input-group">
-                <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                <input type="password" id="password" class="form-control" minlength="6" required />
-                <button type="button" class="btn btn-outline-secondary" id="togglePassword">
-                  <i class="fas fa-eye"></i>
-                </button>
+              <div class="mb-4">
+                <label class="form-label fw-600 text-dark">Mot de passe</label>
+                <div class="input-group input-group-lg">
+                  <span class="input-group-text bg-white border-0"><i class="fas fa-lock text-primary"></i></span>
+                  <input type="password" id="password" class="form-control" minlength="6" required />
+                  <button type="button" class="btn btn-outline-secondary border-0" id="togglePassword">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </div>
               </div>
-            </div>
 
-            <div class="d-grid mb-3">
-              <button type="submit" class="btn btn-success btn-lg rounded-pill">
-                <span class="spinner-border spinner-border-sm d-none" id="loading"></span>
+              <button type="submit" class="btn btn-login btn-lg w-100 mb-4">
+                <span class="spinner-border spinner-border-sm me-2 d-none" id="loading"></span>
                 Se connecter
               </button>
-            </div>
 
-            <!-- LIENS CENTRAUX : Mot de passe oublié + Créer un compte + Retour accueil -->
-            <div class="text-center">
-              <div class="d-flex flex-column flex-sm-row justify-content-center gap-3 align-items-center mb-3">
-                <a href="forgot-password.html" class="text-decoration-none text-primary small fw-semibold order-1 order-sm-1">
+              <!-- Liens -->
+              <div class="text-center">
+                <a href="forgot-password.html" class="link-primary small d-block mb-2">
                   Mot de passe oublié ?
                 </a>
-                <a href="#" class="text-decoration-none text-muted small order-2 order-sm-2" data-bs-toggle="modal" data-bs-target="#signupModal">
-                  Créer un compte
+                <a href="#" class="btn btn-signup w-100 mb-3" data-bs-toggle="modal" data-bs-target="#signupModal">
+                  Créer un compte fournisseur
+                </a>
+                <a href="../index.html" class="btn btn-outline-secondary btn-sm rounded-pill px-4">
+                  <i class="fas fa-home"></i> Retour à l'accueil
                 </a>
               </div>
-              <a href="../index.html" class="btn btn-outline-light btn-sm rounded-pill px-4">
-                <i class="fas fa-home"></i> Retour à l'accueil
-              </a>
-            </div>
-          </form>
-
-          <!-- Toast de succès -->
-          <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
-            <div id="loginToast" class="toast align-items-center text-white bg-success border-0" role="alert">
-              <div class="d-flex">
-                <div class="toast-body">Connexion réussie ! Redirection...</div>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
-              </div>
-            </div>
+            </form>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -85,32 +170,47 @@
   <!-- Modal Inscription -->
   <div class="modal fade" id="signupModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content bg-dark text-white" style="border-radius: 16px;">
-        <div class="modal-header border-0">
+      <div class="modal-content border-0 shadow-lg" style="border-radius: 20px;">
+        <div class="modal-header border-0 bg-primary text-white">
           <h5 class="modal-title">Créer un compte fournisseur</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body p-4">
           <form id="registerForm">
             <div class="mb-3">
-              <input type="text" class="form-control" placeholder="Nom complet" id="regName" required />
+              <input type="text" class="form-control form-control-lg" placeholder="Nom complet" id="regName" required />
             </div>
             <div class="mb-3">
-              <input type="email" class="form-control" placeholder="Email" id="regEmail" required />
+              <input type="email" class="form-control form-control-lg" placeholder="Email professionnel" id="regEmail" required />
             </div>
             <div class="mb-3">
-              <input type="text" class="form-control" placeholder="Téléphone (facultatif)" id="regPhone" />
+              <input type="text" class="form-control form-control-lg" placeholder="Téléphone (+216)" id="regPhone" />
             </div>
-            <div class="mb-3">
-              <input type="password" class="form-control" placeholder="Mot de passe (6+ caractères)" id="regPassword" minlength="6" required />
+            <div class="mb-4">
+              <input type="password" class="form-control form-control-lg" placeholder="Mot de passe (6+ caractères)" id="regPassword" minlength="6" required />
             </div>
-            <button type="submit" class="btn btn-primary w-100 rounded-pill">S'inscrire</button>
+            <button type="submit" class="btn btn-primary btn-lg w-100 rounded-pill">
+              S'inscrire gratuitement
+            </button>
           </form>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Toast succès -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
+    <div id="loginToast" class="toast align-items-center text-white bg-success border-0" role="alert">
+      <div class="d-flex">
+        <div class="toast-body fw-bold">Connexion réussie ! Redirection...</div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/script.js"></script>
   <!-- SÉCURITÉ : vérification session + anti-retour -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -131,8 +231,5 @@
       if (e.persisted) window.location.reload();
     });
   </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/js/script.js"></script>
 </body>
 </html>

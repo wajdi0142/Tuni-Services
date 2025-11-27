@@ -11,29 +11,25 @@ if (empty($token)) {
   <meta charset="UTF-8">
   <title>Réinitialiser le mot de passe - Tuni-Services</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
-  <div class="video-overlay"></div>
-  <video autoplay muted loop id="bg-video" playsinline>
-    <source src="../assets/video/earth.mp4" type="video/mp4">
-  </video>
 
   <div class="container py-5 d-flex align-items-center" style="min-height:100vh;">
     <div class="row justify-content-center w-100">
       <div class="col-md-6 col-lg-5">
-        <div class="card shadow-lg p-4" style="border-radius:20px;backdrop-filter:blur(12px);">
+        <div class="card card-premium shadow-lg p-4" style="border-radius:20px;">
           <div class="text-center mb-4">
             <img src="../assets/img/logo.png" alt="Logo" height="60">
-            <h3 class="mt-3 text-white">Nouveau mot de passe</h3>
+            <h3 class="mt-3">Nouveau mot de passe</h3>
           </div>
 
           <form id="newPasswordForm">
             <input type="hidden" value="<?= htmlspecialchars($token) ?>" id="token">
             
             <div class="mb-3">
-              <label class="form-label text-white">Nouveau mot de passe (8+ caractères)</label>
+              <label class="form-label">Nouveau mot de passe (8+ caractères)</label>
               <div class="input-group">
                 <input type="password" id="newPassword" class="form-control" required minlength="8">
                 <button type="button" class="btn btn-outline-secondary" id="togglePass">
@@ -43,11 +39,11 @@ if (empty($token)) {
             </div>
 
             <div class="mb-3">
-              <label class="form-label text-white">Confirmer</label>
+              <label class="form-label">Confirmer</label>
               <input type="password" id="confirmPassword" class="form-control" required>
             </div>
 
-            <button type="submit" class="btn btn-success w-100 rounded-pill">
+            <button type="submit" class="btn btn-primary w-100 rounded-pill">
               Mettre à jour le mot de passe
             </button>
           </form>
@@ -119,6 +115,6 @@ if (empty($token)) {
       btn.textContent = originalText;
     }
   });
-</script>
+  </script>
 </body>
 </html>

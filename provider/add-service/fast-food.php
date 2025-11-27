@@ -40,40 +40,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta charset="UTF-8" />
   <title>Ajouter Fast Food - Tuni-Services</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
   <link rel="stylesheet" href="../../assets/css/style.css" />
 </head>
 <body>
-  <div class="video-overlay"></div>
-  <video autoplay muted loop id="bg-video" playsinline>
-    <source src="../../assets/video/earth.mp4" type="video/mp4" />
-  </video>
 
   <header>
     <div class="container d-flex justify-content-between align-items-center py-3">
       <div class="d-flex align-items-center gap-3">
         <img src="../../assets/img/logo.png" alt="Logo" class="logo" height="48" />
-        <h1 class="h5 mb-0 fw-bold text-white">Ajouter un Fast Food</h1>
+        <h1 class="h5 mb-0 fw-bold">Ajouter Fast Food</h1>
       </div>
-      <a href="../dashboard.php" class="btn btn-outline-light btn-sm">
-        <i class="fas fa-arrow-left"></i> Retour
+      <a href="../dashboard.php" class="btn btn-outline-primary btn-sm">
+        Retour
       </a>
     </div>
   </header>
 
   <div class="container my-5">
-    <div class="card shadow-lg p-4" style="max-width: 700px; margin: 0 auto; border-radius: 20px;">
+    <div class="card card-premium shadow-lg p-5" style="max-width: 900px; margin: 0 auto;">
       <?= $message ?>
-
       <form method="POST" enctype="multipart/form-data">
         <div class="mb-3">
-          <label class="form-label text-white">Nom du restaurant *</label>
+          <label class="form-label">Nom du restaurant *</label>
           <input type="text" name="name" class="form-control" required />
         </div>
 
         <div class="row mb-3">
           <div class="col-md-6">
-            <label class="form-label text-white">Gouvernorat *</label>
+            <label class="form-label">Gouvernorat *</label>
             <select name="gouvernorat" class="form-select" required>
               <option value="">Choisir...</option>
               <option>Tunis</option>
@@ -84,18 +79,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </select>
           </div>
           <div class="col-md-6">
-            <label class="form-label text-white">Ville *</label>
+            <label class="form-label">Ville *</label>
             <input type="text" name="ville" class="form-control" required />
           </div>
         </div>
 
         <div class="mb-3">
-          <label class="form-label text-white">Prix moyen (DT) *</label>
+          <label class="form-label">Prix moyen (DT) *</label>
           <input type="number" name="prix" step="0.1" class="form-control" required />
         </div>
 
         <div class="mb-3">
-          <label class="form-label text-white">Menu (6 plats max)</label>
+          <label class="form-label">Menu (6 plats max)</label>
           <input type="text" name="menu1" class="form-control mb-2" placeholder="Burger + Frites" />
           <input type="text" name="menu2" class="form-control mb-2" placeholder="Pizza Margherita" />
           <input type="text" name="menu3" class="form-control mb-2" placeholder="Salade César" />
@@ -105,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <div class="d-grid">
-          <button type="submit" class="btn btn-success btn-lg rounded-pill">
+          <button type="submit" class="btn btn-primary btn-lg rounded-pill">
             <i class="fas fa-plus"></i> Ajouter le service
           </button>
         </div>

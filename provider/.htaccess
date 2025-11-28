@@ -1,0 +1,11 @@
+# provider/.htaccess
+<IfModule mod_headers.c>
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+</IfModule>
+
+# Empêche l'accès direct si pas authentifié
+RewriteEngine On
+RewriteCond %{HTTP_COOKIE} !PHPSESSID= [NC]
+RewriteRule ^(dashboard\.php|add-service/) - [F]

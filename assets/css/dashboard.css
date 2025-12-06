@@ -1,0 +1,182 @@
+/* ============================================================= */
+/*  Tuni-Services – Tableau de bord Fournisseur 2025            */
+/*  Version sans variables CSS – tout en dur                     */
+/* ============================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', 'Cairo', sans-serif;
+  background: linear-gradient(180deg, #f7f9ff 0%, #f4f7ff 100%);
+  color: #11223a;
+  min-height: 100vh;
+}
+
+/* ============================================================= */
+/* SIDEBAR (gauche)                                             */
+/* ============================================================= */
+
+.sidebar {
+  background: #11223a;
+  min-height: 100vh;
+  padding: 32px 16px;
+  color: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.sidebar img {
+  filter: brightness(0) invert(1);
+  margin-top: 10px;
+}
+
+.sidebar h5 {
+  color: #e7df00;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.sidebar nav a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 19px;
+  color: #cbd5e1;
+  text-decoration: none;
+  border-radius: 12px;
+  margin: 6px 10px;
+  font-weight: 500;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar nav a i {
+  width: 20px;
+  text-align: center;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background: #4A7BFA;
+  color: #ffffff;
+  transform: translateX(6px);
+}
+
+.sidebar hr {
+  border-color: rgba(255, 255, 255, 0.15);
+  margin: 24px 16px;
+}
+
+.sidebar a.text-danger:hover {
+  background: #dc3545 !important;
+  color: #fff !important;
+}
+
+/* ============================================================= */
+/* CONTENU PRINCIPAL                                            */
+/* ============================================================= */
+
+.flex-grow-1 {
+  margin-left: 280px;
+  min-height: 100vh;
+  background: #f4f7ff;
+  padding: 32px 40px;
+}
+
+/* Responsive : sidebar cachée sur tablette/mobile */
+@media (max-width: 992px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.35s ease;
+    z-index: 1050;
+  }
+  .flex-grow-1 {
+    margin-left: 0;
+    padding: 24px !important;
+  }
+  .sidebar.show {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .flex-grow-1 {
+    padding: 20px !important;
+  }
+}
+
+/* ============================================================= */
+/* CARTES STATISTIQUES                                          */
+/* ============================================================= */
+
+.card-premium {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 32px;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(17, 34, 58, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-premium::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #4A7BFA, #3a68e6);
+  border-radius: 22px 22px 0 0;
+}
+
+.card-premium:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 30px 70px rgba(17, 34, 58, 0.18);
+}
+
+.card-premium i {
+  color: #4A7BFA;
+  margin-bottom: 16px;
+  font-size: 32px;
+}
+
+.stat-number {
+  font-size: 44px;
+  font-weight: 900;
+  color: #11223a;
+  margin: 8px 0;
+}
+
+.card-premium p {
+  margin: 0;
+  font-size: 15px;
+  color: #6b7280;
+}
+
+/* Carte grande (réservations) */
+.card-premium h4 {
+  color: #11223a;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+/* Responsive mobile */
+@media (max-width: 768px) {
+  .card-premium {
+    padding: 24px;
+  }
+  .stat-number {
+    font-size: 35px;
+  }
+}
+

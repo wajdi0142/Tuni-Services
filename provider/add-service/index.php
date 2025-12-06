@@ -16,7 +16,7 @@ $types = ['fast-food', 'taxi', 'transport', 'depanneuse', 'meubles', 'autre'];
   <title>Choisir un type de service - Tuni-Services</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/add-service.css" />
 </head>
 <body>
 
@@ -26,9 +26,9 @@ $types = ['fast-food', 'taxi', 'transport', 'depanneuse', 'meubles', 'autre'];
         <img src="../../assets/img/logo.png" alt="Logo" class="logo" height="48" />
         <h1 class="h5 mb-0 fw-bold">Ajouter un service</h1>
       </div>
-      <a href="../dashboard.php" class="btn btn-outline-primary btn-sm">
-        Retour
-      </a>
+      <div>
+      <a href="../service.php" class="btn btn-outline-primary btn-sm"> Retour </a>
+      </div>
     </div>
   </header>
 

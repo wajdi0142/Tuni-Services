@@ -3,151 +3,149 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Tuni-Services - Services Locaux en Tunisie</title>
+  <title>Tuni-Services - Accueil (Lottie + Dark Mode + Mobile Menu)</title>
 
   <!-- Bootstrap 5.3 + Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 
-  <!-- Google Fonts -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Cairo:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Style CSS -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Lottie (animation) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.1/lottie.min.js" defer></script>
+  <link rel="stylesheet" href="assets/css/index.css">
 </head>
-
 <body>
 
-  <!-- ====================== HEADER ======================= -->
+  <!-- Overlay for mobile menu -->
+  <div id="pageOverlay" class="overlay" aria-hidden="true"></div>
+
+  <!-- Mobile Slide Menu -->
+  <aside id="mobileMenu" class="mobile-menu" aria-hidden="true" aria-label="Menu principal">
+    <button class="close-btn" id="mobileMenuClose" aria-label="Fermer le menu"><i class="fas fa-times"></i></button>
+
+    <nav class="d-flex flex-column gap-2 mt-2">
+      <a href="#" class="p-2 nav-link">Accueil</a>
+      <a href="visitor/fast-food.html" class="p-2 nav-link">Nouveautés</a>
+      <a href="#" class="p-2 nav-link">Liens utiles</a>
+      <a href="visitor/services.php" class="btn btn-primary w-100 mt-3">Chercher un service</a>
+      <a href="provider/login.html" class="btn btn-outline-provider w-100 mt-2">Espace fournisseur</a>
+    </nav>
+
+    <div class="mt-auto small text-muted">
+      <p class="mb-1">Contact: <a href="tel:+21699177795" class="link-primary">+216 99 177 795</a></p>
+      <p class="mb-0">© 2025 Tuni-Services</p>
+    </div>
+  </aside>
+
+  <!-- Header -->
   <header class="site-header sticky-top">
-    <div class="container d-flex align-items-center justify-content-between py-3">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between w-100">
+        <div class="d-flex align-items-center gap-3">
+          <a class="d-flex align-items-center gap-2" href="/" aria-label="Tuni Services - accueil">
+            <img src="assets/img/logoTu.jpg" alt="Logo Tuni Services" class="logo">
+            <div class="brand">
+              <h1 class="site-title">Tuni-Services</h1>
+              <p class="small text-muted">Vos services en Tunisie</p>
+            </div>
+          </a>
+        </div>
 
-      <!-- Logo -->
-      <div class="d-flex align-items-center gap-3">
-        <a class="d-flex align-items-center gap-2 text-decoration-none" href="/" aria-label="Tuni Services - accueil">
-          <img src="assets/img/logoTu.jpg" alt="Logo Tuni Services" class="logo">
-          <div class="brand">
-            <h1 class="m-0 site-title">Tuni-Services</h1>
-            <p class="m-0 small text-muted">Vos services en Tunisie</p>
-          </div>
-        </a>
-      </div>
-
-      <!-- Navigation -->
-      <nav aria-label="Navigation principale">
-        <ul class="nav align-items-center">
-
-          <li class="nav-item">
+        <div class="d-flex align-items-center gap-2">
+          <!-- Desktop nav (hidden on small screens) -->
+          <nav class="d-none d-lg-flex align-items-center">
             <a class="nav-link" href="#"><i class="fas fa-home me-1"></i>Accueil</a>
-          </li>
-
-          <li class="nav-item">
             <a class="nav-link" href="visitor/fast-food.html"><i class="fas fa-fire me-1"></i>Nouveautés</a>
-          </li>
-
-          <li class="nav-item">
             <a class="nav-link" href="#"><i class="fas fa-link me-1"></i>Liens</a>
-          </li>
+          </nav>
 
-          <li class="nav-item ms-3">
-            <a href="provider/login.html" class="btn btn-outline-provider">
-              Espace fournisseur
-            </a>
-          </li>
+          <!-- Theme toggle -->
+          <button id="themeToggle" class="theme-toggle d-flex align-items-center px-2 py-1 me-2" aria-pressed="false" aria-label="Basculer mode sombre">
+            <i id="themeIcon" class="fas fa-moon" aria-hidden="true"></i>
+          </button>
 
-          <li class="nav-item ms-3">
-            <a href="visitor/services.php" class="btn btn-primary">
-              Chercher un Service
-            </a>
-          </li>
+          <!-- Desktop buttons (hidden on small screens) -->
+          <a href="provider/login.html" class="btn btn-outline-provider d-none d-md-inline-block me-2">Espace fournisseur</a>
+          <a href="visitor/services.php" class="btn btn-primary d-none d-md-inline-block">Chercher un service</a>
 
-        </ul>
-      </nav>
-
+          <!-- Burger (visible on small screens) -->
+          <button id="burgerBtn" class="burger d-lg-none ms-2" aria-label="Ouvrir le menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- ======================= HERO ========================= -->
-  <main class="container my-5 fade-in">
+  <!-- MAIN -->
+  <main class="container my-5">
 
-    <section class="hero card shadow-lg p-5 overflow-hidden">
-      <div class="row align-items-center">
-
-        <!-- HERO TEXT -->
-        <div class="col-lg-7 text-lg-start text-center">
-
-          <h2 class="display-4 fw-bold mb-3">
+    <!-- Hero -->
+    <section class="hero card fade-in-up" role="region" aria-label="Section principale">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6 text-center text-lg-start">
+          <h1 class="display-5 fw-bold">
             Trouvez <span class="accent">votre service</span><br>
-            <small class="d-block text-muted fs-5 fw-normal">en un seul clic — partout en Tunisie</small>
-          </h2>
+            <small class="d-block text-muted fs-6 fw-normal">en un seul clic — partout en Tunisie</small>
+          </h1>
 
-          <p class="lead text-secondary mb-4">
-            Fast Food • Taxi • Transport • Dépanneuse • Livraison • Meubles — 
-            <strong class="accent">+1200 prestataires</strong>
+          <p class="lead text-secondary mt-3">
+            Fast Food • Taxi • Transport • Dépanneuse • Livraison • Meubles —
+            <strong class="accent">+1200 prestataires vérifiés</strong>
           </p>
 
-          <!-- CTA Buttons -->
-          <div class="row g-3">
-            <div class="col-md-6">
-              <a href="provider/login.html"
-                 class="btn btn-provider btn-lg w-100 d-flex align-items-center justify-content-center flex-column py-4"
-                 aria-label="Je suis fournisseur">
+          <div class="row g-3 mt-4">
+            <div class="col-6">
+              <a href="provider/login.html" class="btn btn-provider btn-lg w-100 d-flex flex-column py-3" aria-label="Espace fournisseur">
                 <i class="fas fa-store-alt fa-2x mb-2"></i>
-                <strong class="fs-5">Je suis Fournisseur</strong>
+                <strong class="fs-6">Espace Fournisseur</strong>
                 <small class="text-muted">Inscription gratuite</small>
               </a>
             </div>
-            <div class="col-md-6">
-              <a href="visitor/services.php"
-                 class="btn btn-primary btn-lg w-100 d-flex align-items-center justify-content-center flex-column py-4"
-                 aria-label="Chercher un service">
+            <div class="col-6">
+              <a href="visitor/services.php" class="btn btn-primary btn-lg w-100 d-flex flex-column py-3" aria-label="Chercher un service">
                 <i class="fas fa-search-location fa-2x mb-2"></i>
-                <strong class="fs-5 text-white">Chercher un Service</strong>
+                <strong class="fs-6 text-white">Chercher un Service</strong>
                 <small class="text-white-50">Trouvez en 3 secondes</small>
               </a>
             </div>
           </div>
 
           <!-- Stats -->
-          <div class="d-flex gap-4 mt-4 justify-content-center justify-content-lg-start stats">
+          <div class="d-flex gap-4 mt-4 justify-content-center justify-content-lg-start">
             <div class="text-center">
-              <h3 class="mb-0 counter" data-target="1200">+0</h3>
-              <small class="text-muted d-block">Services</small>
+              <h3 class="counter mb-0" data-target="1200">+0</h3>
+              <small class="text-muted">Services</small>
             </div>
-
             <div class="text-center">
               <h3 class="mb-0">24/24</h3>
-              <small class="text-muted d-block">Disponible</small>
+              <small class="text-muted">Disponibilité</small>
             </div>
-
             <div class="text-center">
-              <h3 class="mb-0">Tous</h3>
-              <small class="text-muted d-block">Gouvernorats</small>
+              <h3 class="mb-0">Toute la TN</h3>
+              <small class="text-muted">Couverture</small>
             </div>
           </div>
-
         </div>
 
-        <!-- HERO IMAGE -->
-        <div class="col-lg-5 d-none d-lg-block text-center">
-          <div class="hero-illustration p-4 rounded-4">
-            <img src="assets/img/illustration-hero.png" alt="Illustration services" class="img-fluid">
-          </div>
+        <div class="col-lg-6 text-center">
+          <!-- Lottie animation container -->
+          <div id="lottie-hero" aria-hidden="true"></div>
+          <noscript><img src="assets/img/illustration-hero.png" alt="Services illustration" class="img-fluid rounded-3" /></noscript>
         </div>
-
       </div>
     </section>
 
-    <!-- ==================== Featured Services ==================== -->
-    <section class="mt-5 fade-in">
+    <!-- Popular categories -->
+    <section class="mt-5">
       <h3 class="fw-bold mb-4">Catégories populaires</h3>
-
       <div class="row g-4">
-
         <div class="col-sm-6 col-md-4">
-          <article class="service-card p-4 h-100">
-            <div class="d-flex align-items-start gap-3">
-              <div class="icon-circle"><i class="fas fa-utensils fa-lg"></i></div>
+          <article class="service-card h-100 rounded-4">
+            <div class="d-flex gap-3 align-items-center">
+              <div class="icon-circle"><i class="fas fa-utensils"></i></div>
               <div>
                 <h5 class="mb-1">Restauration</h5>
                 <p class="mb-0 text-muted small">Fast food, traiteurs, cafés</p>
@@ -157,94 +155,196 @@
         </div>
 
         <div class="col-sm-6 col-md-4">
-          <article class="service-card p-4 h-100">
-            <div class="d-flex align-items-start gap-3">
-              <div class="icon-circle"><i class="fas fa-taxi fa-lg"></i></div>
+          <article class="service-card h-100 rounded-4">
+            <div class="d-flex gap-3 align-items-center">
+              <div class="icon-circle"><i class="fas fa-taxi"></i></div>
               <div>
                 <h5 class="mb-1">Taxi & Transport</h5>
-                <p class="mb-0 text-muted small">Courses rapides et sécurisées</p>
+                <p class="mb-0 text-muted small">Courses rapides et sûres</p>
               </div>
             </div>
           </article>
         </div>
 
         <div class="col-sm-6 col-md-4">
-          <article class="service-card p-4 h-100">
-            <div class="d-flex align-items-start gap-3">
-              <div class="icon-circle"><i class="fas fa-tools fa-lg"></i></div>
+          <article class="service-card h-100 rounded-4">
+            <div class="d-flex gap-3 align-items-center">
+              <div class="icon-circle"><i class="fas fa-tools"></i></div>
               <div>
-                <h5 class="mb-1">Dépannage & Remorquage</h5>
+                <h5 class="mb-1">Dépannage</h5>
                 <p class="mb-0 text-muted small">Assistance 24/7</p>
               </div>
             </div>
           </article>
         </div>
-
       </div>
     </section>
 
   </main>
 
-  <!-- ========================= FOOTER ========================= -->
-  <footer class="footer text-white py-5 fade-in">
+  <!-- Footer -->
+  <footer class="footer">
     <div class="container text-center">
-
-      <p class="mb-1">
-        <i class="fas fa-map-marker-alt accent me-2"></i>
-        Menzel Ennour 5022, Monastir
-      </p>
-
-      <p class="mb-1">
-        <i class="fas fa-phone accent me-2"></i>
-        <a href="tel:+21699177795" class="link-light">+216 99 177 795</a>
-      </p>
-
-      <p class="mb-3">
-        <i class="fas fa-envelope accent me-2"></i>
-        <a href="mailto:elarbiwajdi8@gmail.com" class="link-light">
-          elarbiwajdi8@gmail.com
-        </a>
-      </p>
-
-      <small class="text-muted">© 2025 Tuni-Services • Tous droits réservés</small>
-
+      <p class="mb-1"><i class="fas fa-map-marker-alt accent me-2"></i>Menzel Ennour 5022, Monastir</p>
+      <p class="mb-1"><i class="fas fa-phone accent me-2"></i><a href="tel:+21699177795" class="link-light">+216 99 177 795</a></p>
+      <p class="mb-3"><i class="fas fa-envelope accent me-2"></i><a href="mailto:elarbiwajdi8@gmail.com" class="link-light">elarbiwajdi8@gmail.com</a></p>
+      <small class="text-muted"><p style="color: gold;">© 2025 Tuni-Services • Tous droits réservés</p></small>
     </div>
   </footer>
 
-  <!-- ====================== SCRIPTS ========================== -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/script.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
 
-  <!-- Counter animation -->
+  <!-- Interaction & Lottie initialization -->
   <script>
+    /**********************
+     * Helper DOM
+     **********************/
+    const body = document.body;
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    const overlay = document.getElementById('pageOverlay');
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+
+    /**********************
+     * Mobile menu open/close
+     **********************/
+    function openMobileMenu() {
+      mobileMenu.classList.add('open');
+      overlay.classList.add('show');
+      burgerBtn.classList.add('open');
+      burgerBtn.setAttribute('aria-expanded','true');
+      mobileMenu.setAttribute('aria-hidden','false');
+      overlay.setAttribute('aria-hidden','false');
+      // lock scroll
+      document.documentElement.style.overflow = 'hidden';
+    }
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      overlay.classList.remove('show');
+      burgerBtn.classList.remove('open');
+      burgerBtn.setAttribute('aria-expanded','false');
+      mobileMenu.setAttribute('aria-hidden','true');
+      overlay.setAttribute('aria-hidden','true');
+      document.documentElement.style.overflow = '';
+    }
+
+    burgerBtn && burgerBtn.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.contains('open');
+      if(!isOpen) openMobileMenu(); else closeMobileMenu();
+    });
+    mobileMenuClose && mobileMenuClose.addEventListener('click', closeMobileMenu);
+    overlay && overlay.addEventListener('click', closeMobileMenu);
+
+    // Close menu with ESC
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape') closeMobileMenu();
+    });
+
+    /**********************
+     * Theme (dark mode) toggle + persistence
+     **********************/
+    const THEME_KEY = 'tuni_theme';
+    function applyTheme(theme) {
+      if(theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        themeIcon.className = 'fas fa-sun';
+        themeToggle.setAttribute('aria-pressed','true');
+      } else {
+        document.documentElement.classList.remove('dark');
+        themeIcon.className = 'fas fa-moon';
+        themeToggle.setAttribute('aria-pressed','false');
+      }
+    }
+
+    // Load theme from localStorage or system preference
+    (function initTheme(){
+      const saved = localStorage.getItem(THEME_KEY);
+      if(saved) applyTheme(saved);
+      else {
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        applyTheme(prefersDark ? 'dark' : 'light');
+      }
+    })();
+
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      const newTheme = isDark ? 'light' : 'dark';
+      applyTheme(newTheme);
+      localStorage.setItem(THEME_KEY, newTheme);
+    });
+
+    /**********************
+     * Lottie animation in hero
+     **********************/
     document.addEventListener('DOMContentLoaded', () => {
-      const counters = document.querySelectorAll('.counter');
+      // Lottie animation container
+      const container = document.getElementById('lottie-hero');
+
+      // If no container, skip
+      if(container && window.lottie) {
+        // Example Lottie JSON public URL (optimisé pour les interfaces) :
+        // tu peux remplacer l'URL ci-dessous par ta propre animation JSON
+        const animationUrl = 'https://assets10.lottiefiles.com/packages/lf20_touohxv0.json';
+
+        // Charger lottie
+        window.lottie.loadAnimation({
+          container: container,
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          path: animationUrl
+        });
+
+        // Some responsive sizing
+        container.style.maxWidth = '420px';
+      }
+
+      /**************
+       * Intersection observer to reveal hero & elements
+       **************/
+      const reveal = document.querySelectorAll('.fade-in-up');
       const obs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const el = entry.target;
-            const target = +el.dataset.target;
-            let current = 0;
-            const speed = Math.ceil(target / 60);
-
-            const timer = setInterval(() => {
-              current += speed;
-              if (current >= target) {
-                el.textContent = "+" + target;
-                clearInterval(timer);
-              } else {
-                el.textContent = "+" + current;
-              }
-            }, 12);
-
-            obs.unobserve(el);
+          if(entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.3 });
+      }, { threshold: 0.18 });
 
-      counters.forEach(c => obs.observe(c));
+      reveal.forEach(el => obs.observe(el));
+
+      /**************
+       * Counter animation
+       **************/
+      const counters = document.querySelectorAll('.counter');
+      if(counters.length) {
+        const obsC = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if(entry.isIntersecting) {
+              const el = entry.target;
+              const target = +el.getAttribute('data-target') || 0;
+              let value = 0;
+              const step = Math.max(1, Math.floor(target / 60));
+              const timer = setInterval(() => {
+                value += step;
+                if(value >= target) {
+                  el.textContent = '+' + target;
+                  clearInterval(timer);
+                } else {
+                  el.textContent = '+' + value;
+                }
+              }, 18);
+              obsC.unobserve(el);
+            }
+          });
+        }, { threshold: 0.3 });
+        counters.forEach(c => obsC.observe(c));
+      }
     });
   </script>
-
 </body>
 </html>

@@ -30,7 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <script>
-// Bloque le retour en arrière
 history.pushState(null, null, location.href);
 window.onpopstate = function () {
     history.go(1);

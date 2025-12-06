@@ -1,0 +1,106 @@
+/* assets/css/sidebar.css */
+
+:root {
+    --primary: #4A7BFA;
+    --primary-dark: #2D4FB3;
+    --secondary: #E7DF00;
+    --success: #10B981;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+    --dark: #0F172A;
+    --light: #F8FAFC;
+    --gray-300: #CBD5E1;
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --radius: 12px;
+}
+
+.sidebar {
+    width: 280px;
+    height: 100vh;
+    background: linear-gradient(180deg, var(--dark) 0%, #1E293B 100%);
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 2rem 1.5rem;
+    color: white;
+    box-shadow: var(--shadow-lg);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-brand h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;                    /* Ajouté pour compatibilité et silence du warning */
+    -webkit-text-fill-color: transparent;
+    color: transparent;                        /* Bonne pratique */
+    margin: 0;
+}
+
+.nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.nav-item {
+    margin-bottom: 0.5rem;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    color: var(--gray-300);
+    text-decoration: none;
+    border-radius: var(--radius);
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    transform: translateX(5px);
+}
+
+.nav-link.active {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    box-shadow: 0 4px 12px rgba(74, 123, 250, 0.3);
+}
+
+.nav-link i {
+    width: 24px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 1.5rem;
+    }
+    
+    .main-content {
+        margin-left: 0 !important;
+    }
+}

@@ -1,0 +1,233 @@
+/* ============================================================= */
+/*  Tuni-Services — Page "Choisir un type de service" 2025      */
+/*  Style moderne, épuré, sans variables CSS                    */
+/* ============================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', 'Cairo', sans-serif;
+  background: linear-gradient(180deg, #f7f9ff 0%, #f4f7ff 60%);
+  color: #11223a;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ============================================================= */
+/* HEADER                                                       */
+/* ============================================================= */
+
+header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 6px 30px rgba(17, 34, 58, 0.08);
+  border-bottom: 4px solid #4A7BFA;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 16px 0;
+}
+
+header .logo {
+  height: 48px;
+  transition: transform 0.35s ease;
+}
+
+header .logo:hover {
+  transform: scale(1.1);
+}
+
+header h1.h5 {
+  color: #11223a;
+  font-weight: 800;
+}
+
+/* Bouton Retour */
+.btn-outline-primary {
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-weight: 600;
+  border: 2px solid #4A7BFA;
+  color: #4A7BFA;
+  transition: all 0.35s ease;
+}
+
+.btn-outline-primary:hover {
+  background: #4A7BFA;
+  color: #fff;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(74, 123, 250, 0.25);
+}
+
+/* ============================================================= */
+/* CARTE PRINCIPALE                                             */
+/* ============================================================= */
+
+.card-premium {
+  background: #ffffff;
+  border-radius: 26px;
+  padding: 48px;
+  max-width: 900px;
+  margin: 40px auto;
+  box-shadow: 0 20px 60px rgba(17, 34, 58, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-premium::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #4A7BFA, #3a68e6);
+  border-radius: 26px 26px 0 0;
+}
+
+/* ============================================================= */
+/* CARTES DE TYPE DE SERVICE                                    */
+/* ============================================================= */
+
+.type-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 32px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+  box-shadow: 0 10px 30px rgba(17, 34, 58, 0.06);
+  height: 100%;
+}
+
+.type-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 25px 60px rgba(17, 34, 58, 0.15);
+  border-color: #4A7BFA;
+}
+
+.type-card i {
+  color: #4A7BFA;
+  margin-bottom: 20px;
+  transition: all 0.35s ease;
+}
+
+.type-card h5 {
+  color: #11223a;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+/* État sélectionné */
+.type-card.selected {
+  background: linear-gradient(135deg, #4A7BFA, #3a68e6);
+  color: white;
+  border-color: #4A7BFA;
+  transform: translateY(-16px) scale(1.03);
+  box-shadow: 0 30px 80px rgba(74, 123, 250, 0.35);
+}
+
+.type-card.selected i,
+.type-card.selected h5 {
+  color: white;
+}
+
+.type-card.selected:hover {
+  transform: translateY(-18px) scale(1.04);
+}
+
+/* ============================================================= */
+/* FORMULAIRE DYNAMIQUE (quand "Autre" est choisi)              */
+/* ============================================================= */
+
+#formContainer form {
+  background: #fafaff;
+  padding: 32px;
+  border-radius: 20px;
+  border: 1px dashed #4A7BFA;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.form-control,
+.form-select {
+  border-radius: 16px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  padding: 14px 18px;
+  font-size: 1rem;
+  transition: all 0.35s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #4A7BFA;
+  box-shadow: 0 0 0 6px rgba(74, 123, 250, 0.15);
+  outline: none;
+}
+
+.btn-primary.btn-lg.rounded-pill {
+  background: linear-gradient(90deg, #4A7BFA, #3a68e6);
+  border: none;
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  transition: all 0.35s ease;
+  box-shadow: 0 15px 40px rgba(74, 123, 250, 0.3);
+}
+
+.btn-primary.btn-lg.rounded-pill:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 60px rgba(74, 123, 250, 0.4);
+}
+
+/* ============================================================= */
+/* ANIMATIONS                                                   */
+/* ============================================================= */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================= */
+/* RESPONSIVE                                                   */
+/* ============================================================= */
+
+@media (max-width: 768px) {
+  .card-premium {
+    padding: 32px 20px;
+    margin: 20px 15px;
+  }
+
+  .type-card {
+    padding: 24px 16px;
+  }
+
+  header .container {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+
+  #formContainer form {
+    padding: 24px 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .row.g-4 > .col-md-4 {
+    margin-bottom: 16px;
+  }
+}
